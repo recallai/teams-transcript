@@ -133,6 +133,4 @@ node backend.js
 
 Copy everything in curl.json, open a new terminal, and run the curl command.
 
----
-
-You need a total of 3 terminals open. Both real-time and async transcription are now available to you.
+Let the bot into the meeting. Both real-time and async transcription are now available to you.
