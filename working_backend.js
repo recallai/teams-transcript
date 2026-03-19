@@ -9,16 +9,16 @@ app.use(express.json());
 const PORT = process.env.PORT || 3000;
 const RECALL_API_KEY = process.env.RECALL_API_KEY;
 const RECALL_REGION = process.env.RECALL_REGION || "us-west-2";
-const PUBLIC_BASE_URL = process.env.PUBLIC_BASE_URL;
-
 const BASE_URL = `https://${RECALL_REGION}.recall.ai/api/v1`;
+
+// For simple webhook verification, use a random secret.
+const REALTIME_WEBHOOK_TOKEN = process.env.REALTIME_WEBHOOK_TOKEN || "change-me";
+
+console.log("RECALL_API_KEY:", process.env.RECALL_API_KEY ?? "missing api key");
+console.log("RECALL_REGION:", process.env.RECALL_REGION || "missing region");
 
 if (!RECALL_API_KEY) {
   throw new Error("Missing RECALL_API_KEY environment variable");
-}
-
-if (!PUBLIC_BASE_URL) {
-  throw new Error("Missing PUBLIC_BASE_URL environment variable");
 }
 
 async function recallRequest(path, options = {}) {
@@ -55,8 +55,9 @@ app.get("/", (_req, res) => {
   res.send("Recall bot backend is running");
 });
 
-// Create bot with live transcription
-app.post("/bots/realtime", async (req, res) => {
+// Existing: send bot with no real-time transcript config.
+// Good for post-meeting async transcription only.
+app.post("/bots", async (req, res) => {
   try {
     const { meetingUrl, botName } = req.body;
 
@@ -64,7 +65,41 @@ app.post("/bots/realtime", async (req, res) => {
       return res.status(400).json({ error: "meetingUrl is required" });
     }
 
-    const realtimeWebhookUrl = `${PUBLIC_BASE_URL}/webhook/recall/transcript`;
+    const bot = await recallRequest("/bot/", {
+      method: "POST",
+      body: JSON.stringify({
+        meeting_url: meetingUrl,
+        bot_name: botName || "Meeting Bot"
+      })
+    });
+
+    return res.status(201).json({
+      success: true,
+      mode: "post_meeting_only",
+      botId: bot.id,
+      status: bot.status
+    });
+  } catch (err) {
+    return res.status(err.status || 500).json({
+      success: false,
+      error: err.message,
+      details: err.data || null
+    });
+  }
+});
+
+// New: send bot with real-time transcription enabled.
+app.post("/bots/realtime", async (req, res) => {
+  try {
+    console.log("HJOTT")
+    const { meetingUrl, botName } = req.body;
+
+    if (!meetingUrl) {
+      return res.status(400).json({ error: "meetingUrl is required" });
+    }
+
+    const realtimeWebhookUrl =
+      `${process.env.PUBLIC_BASE_URL}/webhooks/recall/realtime?token=${encodeURIComponent(REALTIME_WEBHOOK_TOKEN)}`;
 
     const bot = await recallRequest("/bot/", {
       method: "POST",
@@ -75,12 +110,8 @@ app.post("/bots/realtime", async (req, res) => {
           transcript: {
             provider: {
               recallai_streaming: {
-                mode: "prioritize_low_latency",
-                language_code: "en"
+                mode: "prioritize_low_latency"
               }
-            },
-            diarization: {
-              use_separate_streams_when_available: true
             }
           },
           realtime_endpoints: [
@@ -96,6 +127,7 @@ app.post("/bots/realtime", async (req, res) => {
 
     return res.status(201).json({
       success: true,
+      mode: "realtime",
       botId: bot.id,
       status: bot.status
     });
@@ -108,18 +140,20 @@ app.post("/bots/realtime", async (req, res) => {
   }
 });
 
-// Live transcript events
+// Real-time transcript webhook.
+// This receives utterances while the bot is in the call.
 app.post("/webhook/recall/transcript", (req, res) => {
-  const event = req.body?.event;
+const event = req.body?.event;
 
-  if (event === "transcript.partial_data" || event === "transcript.data") {
+  if (event === "transcript.partial_data") {
     const transcript = req.body?.data?.data;
     const participant = transcript?.participant;
     const words = transcript?.words || [];
+
     const text = words.map((w) => w.text).join(" ").trim();
 
     console.log({
-      event,
+      event, // transcript.partial_data or transcript.data
       speaker: participant?.name || "Unknown",
       speakerId: participant?.id || null,
       languageCode: transcript?.language_code || null,
@@ -127,17 +161,16 @@ app.post("/webhook/recall/transcript", (req, res) => {
     });
   }
 
-  return res.json({ ok: true });
+  res.json({ ok: true });
 });
 
-// Status webhook: configure this separately in Recall webhook settings
+// Post-meeting webhook for async transcription flow.
 app.post("/webhooks/recall", async (req, res) => {
   const event = req.body?.event;
 
   try {
     if (event === "recording.done") {
       const recordingId = req.body?.data?.recording?.id;
-
       if (!recordingId) {
         return res.json({ ok: true, ignored: true });
       }
@@ -157,12 +190,12 @@ app.post("/webhooks/recall", async (req, res) => {
       );
 
       console.log("Started async transcription:", transcriptJob.id);
+
       return res.json({ ok: true });
     }
 
     if (event === "transcript.done") {
       const transcriptId = req.body?.data?.transcript?.id;
-
       if (!transcriptId) {
         return res.json({ ok: true, ignored: true });
       }
@@ -171,18 +204,8 @@ app.post("/webhooks/recall", async (req, res) => {
         method: "GET"
       });
 
-      const transcriptDownloadUrl = transcript?.data?.download_url || null;
+      console.log("Transcript ready:", transcript.data?.download_url || null);
 
-      console.log("Transcript ready:", transcriptDownloadUrl);
-
-      return res.json({
-        ok: true,
-        transcriptDownloadUrl
-      });
-    }
-
-    if (event === "transcript.failed") {
-      console.log("Transcript failed:", req.body);
       return res.json({ ok: true });
     }
 
@@ -195,9 +218,16 @@ app.post("/webhooks/recall", async (req, res) => {
   }
 });
 
+// Post-meeting webhook for async transcription flow.
+app.get("/", async (req, res) => {
+  console.log("Hit")
+    return res.json({ ok: true, ignored: true });
+});
+
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`POST http://localhost:${PORT}/bots`);
   console.log(`POST http://localhost:${PORT}/bots/realtime`);
-  console.log(`POST ${PUBLIC_BASE_URL}/webhook/recall/transcript`);
-  console.log(`POST ${PUBLIC_BASE_URL}/webhooks/recall`);
+  console.log(`POST http://localhost:${PORT}/webhooks/recall`);
+  console.log(`POST http://localhost:${PORT}/'webhooks/recall/realtime'`);
 });

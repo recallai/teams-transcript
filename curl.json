@@ -1,6 +1,6 @@
 curl --request POST \
-     --url https://us-west-2.recall.ai/api/v1/bot/ \
-     --header "Authorization: 020bce3190866c07c4202306bb0c06c8bce41e9c" \
+     --url "https://${RECALL_REGION}.recall.ai/api/v1/bot/" \
+     --header "Authorization: Token ${RECALL_API_KEY}" \
      --header "accept: application/json" \
      --header "content-type: application/json" \
      --data '
@@ -21,7 +21,7 @@ curl --request POST \
     "realtime_endpoints": [
       {
         "type": "webhook",
-        "url": "https://floorless-burton-unifoliolate.ngrok-free.dev/webhook/recall/transcript",
+        "url": "${PUBLIC_BASE_URL}/webhook/recall/transcript",
         "events": ["transcript.data", "transcript.partial_data"]
       }
     ]
