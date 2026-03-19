@@ -1,6 +1,6 @@
 # Getting transcript from Microsoft Teams (real-time and async)
 
-This repository demonstrates how to retrieve transcripts from a Microsoft Teams meeting using Recall.ai. To do this, you’ll need to send a bot to the meeting.
+This repository demonstrates how to retrieve transcripts from a [Microsoft Teams](https://www.recall.ai/product/meeting-bot-api/microsoft-teams) meeting using [Recall.ai]](https://www.recall.ai). To do this, you’ll need to send a bot to the meeting.
 
 Clone the repository and follow the steps below.
 
@@ -118,6 +118,8 @@ Add events such as:
 Replace YOUR_TEAMS_MEETING_LINK with the Microsoft Teams meeting link you want to send your meeting bot to.
 Replace YOUR_NGROK_LINK with your ngrok link.
 
+![curl.png](curl.png)
+
 ---
 
 ## 8. Start your terminal
@@ -129,7 +131,7 @@ node backend.js
 
 ---
 
-## 9. Send bot to meeting and retrieve live transcription
+## 9. Run curl command to send bot to meeting and retrieve live transcription
 
 Copy everything in curl.json, open a new terminal, and run the curl command.
 
