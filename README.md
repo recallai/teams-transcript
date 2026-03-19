@@ -133,6 +133,6 @@ node backend.js
 
 ## 9. Run curl command to send bot to meeting and retrieve live transcription
 
-Copy everything in curl.json, open a new terminal, and run the curl command.
+Open a new terminal, copy everything in curl.json, and run the curl command in the terminal.
 
 Let the bot into the meeting. Both real-time and async transcription are now available to you.
