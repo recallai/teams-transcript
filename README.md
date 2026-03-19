@@ -25,8 +25,8 @@ cd <repo-name>
 
 ---
 
-## 2. Create a Recall.ai account and get API key
-- [Recall.ai](https://us-west-2.recall.ai/dashboard/)
+## 2. Create a Recall.ai account 
+- Get your [Recall.ai](https://us-west-2.recall.ai/dashboard/) API key
 
 ---
 
