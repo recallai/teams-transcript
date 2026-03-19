@@ -59,7 +59,7 @@ export $(grep -v '^#' .env | xargs)
 ---
 
 ## 5. Install dependencies
-From the root directory:
+In your terminal, run:
 
 ```bash
 npm install
@@ -122,7 +122,7 @@ Replace YOUR_NGROK_LINK with your ngrok link.
 
 ## 8. Start your terminal
 
-Run 
+In your terminal, run: 
 ```
 node backend.js
 ```
@@ -133,4 +133,6 @@ node backend.js
 
 Copy everything in curl.json, open a new terminal, and run the curl command.
 
+---
 
+You need a total of 3 terminals open. Both real-time and async transcription are now available to you.
