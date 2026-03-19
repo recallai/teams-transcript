@@ -115,7 +115,7 @@ Add events such as:
 
 ## 7. Configure curl.json file
 
-Replace YOUR_TEAMS_MEETING_LINK with the link you want to send your meeting bot to.
+Replace YOUR_TEAMS_MEETING_LINK with the Microsoft Teams meeting link you want to send your meeting bot to.
 Replace YOUR_NGROK_LINK with your ngrok link.
 
 ---
@@ -131,6 +131,6 @@ node backend.js
 
 ## 9. Send bot to meeting and retrieve live transcription
 
-Copy everything in curl.json, open a new terminal, and paste the value.
+Copy everything in curl.json, open a new terminal, and run the curl command.
 
 
