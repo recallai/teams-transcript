@@ -5,7 +5,7 @@ curl --request POST \
      --header "content-type: application/json" \
      --data '
 {
-  "meeting_url": "https://teams.live.com/meet/939665544831?p=7asJ0SzU38QFD6Baft",
+  "meeting_url": "YOUR_TEAMS_MEETING_LINK",
   "recording_config": {
     "transcript": {
       "provider": {
