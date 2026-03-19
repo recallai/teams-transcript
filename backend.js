@@ -9,7 +9,7 @@ app.use(express.json());
 const PORT = process.env.PORT || 3000;
 const RECALL_API_KEY = process.env.RECALL_API_KEY;
 const RECALL_REGION = process.env.RECALL_REGION || "us-west-2";
-const PUBLIC_BASE_URL = process.env.PUBLIC_BASE_URL;
+const PUBLIC_BASE_URL = "";
 
 const BASE_URL = `https://${RECALL_REGION}.recall.ai/api/v1`;
 

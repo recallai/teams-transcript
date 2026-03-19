@@ -21,7 +21,7 @@ curl --request POST \
     "realtime_endpoints": [
       {
         "type": "webhook",
-        "url": "${PUBLIC_BASE_URL}/webhook/recall/transcript",
+        "url": "YOUR_NGROK_LINK/webhook/recall/transcript",
         "events": ["transcript.data", "transcript.partial_data"]
       }
     ]
