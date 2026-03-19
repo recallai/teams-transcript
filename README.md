@@ -136,3 +136,16 @@ node backend.js
 Open a new terminal, copy everything in curl.json, and run the curl command in the terminal.
 
 Let the bot into the meeting. Both real-time and async transcription are now available to you.
+
+# How it works
+
+1. Send meeting bot into Microsoft Teams meeting
+2. Real-time transcription begins
+3. When the meeting ends, Recall.ai returns `recording.done`
+4. Async transcription begins, Recall.ai returns `transcription.done` when transcript URL is ready
+
+# Tech stack
+
+- Recall.ai's [Meeting Bot API](https://www.recall.ai/product/meeting-bot-api)
+- [Ngrok](https://www.ngrok.com)
+  
