@@ -50,15 +50,7 @@ Asia -> https://www.ap-northeast-1.recall.ai
 
 ---
 
-## 4. Load your .env file to your shell environment
-
-```bash
-export $(grep -v '^#' .env | xargs)
-```
-
----
-
-## 5. Install dependencies
+## 4. Install dependencies
 In your terminal, run:
 
 ```bash
@@ -66,7 +58,7 @@ npm install
 ```
 ---
 
-## 6. Start an ngrok Tunnel
+## 5. Start an ngrok Tunnel
 
 [Recall.ai](https://us-west-2.recall.ai/dashboard/) requires a **public webhook endpoint**, so we expose the backend with ngrok. 
 
