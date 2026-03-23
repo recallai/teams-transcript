@@ -37,6 +37,7 @@ Rename the .env.example file to .env and replace the following
 ```
 RECALL_API_KEY=your_recall_api_key
 RECALL_REGION=your_api_base_when_you_signup
+PUBLIC_BASE_URL=region_when_you_signed_up
 ```
 RECALL_API_BASE is the base URL for your Recall region and is determined when you sign up for Recall.ai
 
