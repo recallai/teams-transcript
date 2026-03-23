@@ -1,6 +1,6 @@
 curl --request POST \
-     --url "https://${RECALL_REGION}.recall.ai/api/v1/bot/" \
-     --header "Authorization: Token ${RECALL_API_KEY}" \
+     --url "https://YOUR_RECALL_REGION.recall.ai/api/v1/bot/" \
+     --header "Authorization: Token YOUR_RECALL_API_KEY}" \
      --header "accept: application/json" \
      --header "content-type: application/json" \
      --data '
