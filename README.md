@@ -110,7 +110,7 @@ Add events such as:
 Replace YOUR_TEAMS_MEETING_LINK with the Microsoft Teams meeting link you want to send your meeting bot to.
 Replace YOUR_NGROK_LINK with your ngrok link.
 
-![curl.png](images/curl.png)
+![curl.png](images/curla.png)
 
 ---
 
