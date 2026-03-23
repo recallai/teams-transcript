@@ -107,9 +107,10 @@ Add events such as:
 
 ## 7. Configure curl.json file
 
-Replace YOUR_TEAMS_MEETING_LINK with the Microsoft Teams meeting link you want to send your meeting bot to.
-Replace YOUR_NGROK_LINK with your ngrok link.
-
+- Replace YOUR_TEAMS_MEETING_LINK with the Microsoft Teams meeting link you want to send your meeting bot to.
+- Replace YOUR_NGROK_LINK with your ngrok link.
+- Replace YOUR_REGION_HERE with your region
+- Replace YOUR_API_KEY_HERE with your API key from Recall.ai
 ![curl.png](images/curl.png)
 
 ---
