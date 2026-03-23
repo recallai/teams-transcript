@@ -37,17 +37,19 @@ Rename the .env.example file to .env and replace the following
 ```
 RECALL_API_KEY=your_recall_api_key
 RECALL_REGION=your_api_base_when_you_signup
-PUBLIC_BASE_URL=region_when_you_signed_up
+PUBLIC_BASE_URL=ngrok_link // you'll configure this in step 5
 ```
 RECALL_API_BASE is the base URL for your Recall region and is determined when you sign up for Recall.ai
 
-US West 2 -> https://www.us-west-2.recall.ai
+where_you_signed_up -> url -> RECALL_REGION
 
-US East 1 -> https://www.us-east-1.recall.ai
+US West 2 -> https://www.us-west-2.recall.ai -> us-west-2
 
-EU -> https://www.eu-central-1.recall.ai
+US East 1 -> https://www.us-east-1.recall.ai -> us-east-1
 
-Asia -> https://www.ap-northeast-1.recall.ai
+EU -> https://www.eu-central-1.recall.ai -> eu-central-1
+
+Asia -> https://www.ap-northeast-1.recall.ai -> ap-northeast-1
 
 ---
 
