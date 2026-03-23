@@ -134,7 +134,7 @@ Let the bot into the meeting. Both real-time and async transcription are now ava
 
 1. Send meeting bot into Microsoft Teams meeting
 2. Real-time transcription begins
-3. When the meeting ends, Recall.ai returns `recording.done`
+3. When the meeting ends, Recall.ai returns `recording.done` and async transcription can begin
 4. Async transcription begins, Recall.ai returns `transcription.done` when transcript URL is ready
 
 # Tech stack
