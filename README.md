@@ -1,10 +1,24 @@
-# Getting transcript from Microsoft Teams (real-time and async)
+# How to get a transcript for Microsoft Teams
 
 This repository demonstrates how to retrieve transcripts from a [Microsoft Teams](https://www.recall.ai/product/meeting-bot-api/microsoft-teams) meeting using [Recall.ai](https://www.recall.ai). To do this, you’ll need to send a bot to the meeting.
 
 Clone the repository and follow the steps below.
 
 # to do: add video explaining the set up for github
+
+--
+
+# How it works
+
+1. Send meeting bot into Microsoft Teams meeting
+2. Real-time transcription begins
+3. When the meeting ends, Recall.ai returns `recording.done` and async transcription can begin
+4. Async transcription begins, Recall.ai returns `transcription.done` when transcript URL is ready
+
+# Tech stack
+
+- Recall.ai's [Meeting Bot API](https://www.recall.ai/product/meeting-bot-api)
+- [Ngrok](https://www.ngrok.com)
 
 ---
 
@@ -133,15 +147,4 @@ Open a new terminal, copy everything in curl.json, and run the curl command in t
 
 Let the bot into the meeting. Both real-time and async transcription are now available to you.
 
-# How it works
 
-1. Send meeting bot into Microsoft Teams meeting
-2. Real-time transcription begins
-3. When the meeting ends, Recall.ai returns `recording.done` and async transcription can begin
-4. Async transcription begins, Recall.ai returns `transcription.done` when transcript URL is ready
-
-# Tech stack
-
-- Recall.ai's [Meeting Bot API](https://www.recall.ai/product/meeting-bot-api)
-- [Ngrok](https://www.ngrok.com)
-  
