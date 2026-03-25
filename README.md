@@ -121,6 +121,17 @@ Add events such as:
 - `transcript.done`
 
 ---
+## Bonus: If you only want async trasncription
+
+Configure bot.json file
+
+- Replace YOUR_TEAMS_MEETING_LINK with the Microsoft Teams meeting link you want to send your meeting bot to.
+- Replace YOUR_REGION_HERE with your region (RECALL_REGION)
+- Replace YOUR_API_KEY_HERE with your API key from Recall.ai (RECALL_API_KEY)
+
+Run the cURL command in the terminal, a bot will appear in your Teams meeting that will start async transcription once the meeting ends.
+  
+---
 
 ## 7. Configure curl.json file
 
