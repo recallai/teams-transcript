@@ -4,8 +4,6 @@ This repository demonstrates how to retrieve transcripts from a [Microsoft Teams
 
 Clone the repository and follow the steps below.
 
-# to do: add video explaining the set up for github
-
 --
 
 # How it works
