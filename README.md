@@ -133,7 +133,9 @@ Run the cURL command in the terminal, a bot will appear in your Teams meeting th
   
 ---
 
-## 7. Configure curl.json file
+## 7. Start real-time and async transcription
+
+Configure curl.json file
 
 - Replace YOUR_TEAMS_MEETING_LINK with the Microsoft Teams meeting link you want to send your meeting bot to.
 - Replace YOUR_NGROK_LINK with your ngrok link (PUBLIC_BASE_URL)
