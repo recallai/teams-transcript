@@ -1,0 +1,9 @@
+curl -X POST https://us-west-2.recall.ai/api/v1/bot \
+-H 'Authorization: Token 020bce3190866c07c4202306bb0c06c8bce41e9c' \
+-H 'Content-Type: application/json' \
+-d '
+{
+  "meeting_url": "https://teams.live.com/meet/9362844156738?p=lPQKkg1FmjGxeDeoen",
+  "bot_name": "My Bot",
+  "recording_config": {"transcript": {"provider": {"meeting_captions": {}}}}
+}'

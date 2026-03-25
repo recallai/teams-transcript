@@ -1,0 +1,9 @@
+curl -X POST https://YOUR_RECALL_REGION.recall.ai/api/v1/bot \
+-H 'Authorization: Token YOUR_RECALL_API_KEY' \
+-H 'Content-Type: application/json' \
+-d '
+{
+  "meeting_url": "YOUR_TEAMS_MEETING_LINK",
+  "bot_name": "My Bot",
+  "recording_config": {"transcript": {"provider": {"meeting_captions": {}}}}
+}'
