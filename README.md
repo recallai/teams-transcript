@@ -119,7 +119,7 @@ Add events such as:
 - `transcript.done`
 
 ---
-## Bonus: If you only want async trasncription
+## Bonus: If you only want async transcription
 
 Configure bot.json file
 
