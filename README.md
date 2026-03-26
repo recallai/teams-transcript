@@ -20,7 +20,7 @@ Clone the repository and follow the steps below.
 
 ---
 
-## Features
+# Features
 - Real-time transcription
 - Async transcription
 
