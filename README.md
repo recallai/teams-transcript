@@ -31,8 +31,8 @@ Clone the repository and follow the steps below.
 ## 1. Clone the repository
 
 ```bash
-git clone <your-repo-url>
-cd <repo-name>
+git clone https://github.com/recallai/teams-transcript.git
+cd teams-transcript
 ```
 
 ---
