@@ -24,7 +24,7 @@ Clone the repository and follow the steps below.
 - Real-time transcription
 - Async transcription
 
-Async transcription is generated and accessible once the meeting ends, while real-time transcription is generated during the meeting. 
+**Async transcription** is generated and accessible once the meeting ends, while **real-time transcription** is generated during the meeting. 
 
 ---
 
