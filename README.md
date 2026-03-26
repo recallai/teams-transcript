@@ -44,7 +44,7 @@ cd teams-transcript
 
 ## 3. Add environment variables
 
-Rename the *.env.example* file to *.env* and replace the following
+Rename the **.env.example** file to **.env** and replace the following
 
 ```
 RECALL_API_KEY=your_recall_api_key
