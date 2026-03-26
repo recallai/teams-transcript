@@ -4,6 +4,10 @@ This repository demonstrates how to retrieve transcripts from a [Microsoft Teams
 
 Clone the repository and follow the steps below.
 
+Watch the video below to see the setup in action.
+
+[![](images/transcript_demo_img.png)](https://www.youtube.com/watch?v=J7Gwc2nVhD8&pp=0gcJCdsKAYcqIYzv)
+
 --
 
 # How it works
