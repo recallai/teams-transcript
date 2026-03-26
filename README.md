@@ -44,7 +44,7 @@ cd teams-transcript
 
 ## 3. Add environment variables
 
-Rename the **.env.example** file to **.env** and replace the following
+Rename the **.example.env** file to **.env** and replace the following
 
 ```
 RECALL_API_KEY=your_recall_api_key
@@ -93,6 +93,11 @@ You will receive a URL similar to:
 
 ```
 https://abc123.ngrok-free.app // this is YOUR_NGROK_URL
+```
+
+Remember to add it to .env
+```
+PUBLIC_BASE_URL=ngrok_link
 ```
 
 ---
